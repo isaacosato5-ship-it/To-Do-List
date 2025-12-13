@@ -1,0 +1,131 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    min-height: 200px;
+    min-width: 50%;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px black;
+    padding: 15px;
+    background-color: rgb(238, 241, 243);
+    flex-direction: column;
+    gap: 20px;
+    display: flex;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.container:hover{
+        transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.container:hover{
+    transform: scale(1.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+.container:focus-within{
+    transform: scale(1.15);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3s);
+}
+.todoheader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.controlBTN{
+    padding: 7px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid rgb(202, 196, 196);
+    color: rgb(59, 56, 56);
+}
+.clearBTN{
+    color: rgb(241, 3, 3);
+    background-color: rgb(250, 213, 213);
+}
+.taskinput{
+    justify-content: space-between;
+    display: flex;
+}
+.addBtn, .allBtn{
+    color: rgb(0, 209, 178);
+    border: 1px solid rgb(0, 209, 178);
+    background-color: rgba(0, 209, 178, 0.2);
+}
+.inputEl{
+    padding: 5px;
+    width: 90%;
+    outline: 1px solid rgba(0, 209, 178, 0.2);
+    border-radius: 10px;
+
+}
+.leftside{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.taskparent{
+    border-radius: 20px;
+    padding: 20px;
+    background-color: rgb(223, 220, 220);
+    min-height: 100px;
+}
+.taskleftside{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.taskrightside{
+   display: flex;
+   gap: 15px;
+}
+.taskchild{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.taskchild:hover{
+    background-color: rgb(212, 208, 208);
+}
+.done{
+    text-decoration: line-through;
+    color: rgb(150, 146, 146);
+}
+.tabbBtn{
+    font-weight: bold;
+    padding: 5px;
+    font-size: 14px;
+}
+.taskfooter{
+    justify-content: space-between;
+    display: flex;
+    gap: 100px;
+    align-items: center;
+}
+@media (max-width: 997px) {
+    .todoheader {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+@media (max-width: 640px) {
+    .container {
+        min-width: 300px;
+    }
+}
+img{
+    border-radius: 50%;
+}
