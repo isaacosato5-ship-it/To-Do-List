@@ -20,20 +20,7 @@ body {
     flex-direction: column;
     gap: 20px;
     display: flex;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.container:hover{
-        transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-.container:hover{
-    transform: scale(1.1);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-}
-.container:focus-within{
-    transform: scale(1.15);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3s);
+    margin: 50px;
 }
 .todoheader{
     display: flex;
@@ -115,17 +102,15 @@ body {
     gap: 100px;
     align-items: center;
 }
-@media (max-width: 997px) {
+
+@media (mix-width: 640px) {
+            .container {
+                max-width: 300px;
+            }
+        }
+@media (max-width: 1195px) {
     .todoheader {
-        flex-direction: column;
-        gap: 5px;
+       flex-direction: column;
+       gap: 5px;
     }
-}
-@media (max-width: 640px) {
-    .container {
-        min-width: 300px;
-    }
-}
-img{
-    border-radius: 50%;
 }
