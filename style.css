@@ -106,6 +106,7 @@ body {
 @media (mix-width: 640px) {
             .container {
                 max-width: 300px;
+                margin: 50px;
             }
         }
 @media (max-width: 1195px) {
