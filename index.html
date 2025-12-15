@@ -1,69 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Osato's To-Do List</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="todoheader">
-            <div class="leftside">
-                <img src="images/a1317654-6079-4aec-9a6b-e5be01ce35f8.jpeg" width="50">
-                <h2>Osato's To-Do</h2>
-            </div>
-            <div class="rightside">
-                <button class="controlBTN lightDark">☀️</button>
-                <button class="controlBTN clearBTN">Clear Completed</button>
-                <button class="controlBTN exportBTN">Export</button>
-                <button class="controlBTN importBTN">Import</button>
-            </div>
+      <div class="todoheader">
+        <div class="leftside">
+          <img
+            src="images/a1317654-6079-4aec-9a6b-e5be01ce35f8.jpeg"
+            width="50"
+          />
+          <h2>Osato's To-Do</h2>
         </div>
-        <div class="taskinput">
-            <input type="text" class="inputEl" placeholder="Add a new task and press enter">
-            <button class="addBtn controlBTN">Add</button>
+        <div class="rightside">
+          <button class="controlBTN lightDark">☀️</button>
+          <button class="controlBTN clearBTN">Clear Completed</button>
+          <button class="controlBTN exportBTN">Export</button>
+          <button class="controlBTN importBTN">Import</button>
         </div>
-        <div class="taskparent">
-            <div class="taskchild">
-                <div class="taskleftside">
-                    <input type="checkbox">
-                    <p>Test Task</p>
-                </div>
-                <div class="taskrightside">
-                    <div class="editbutton">✎</div>
-                    <div class="deletebutton">🗑</div>
-                </div>
-            </div>
-            <div class="taskchild">
-                <div class="taskleftside">
-                    <input type="checkbox">
-                    <p class="done">Test Task</p>
-                </div>
-                <div class="taskrightside">
-                    <div class="editbutton">✎</div>
-                    <div class="deletebutton">🗑</div>
-                </div>
+      </div>
+      <div class="taskinput">
+        <input
+          type="text"
+          class="inputEl"
+          placeholder="Add a new task and press enter"
+        />
+        <button class="addBtn controlBTN">Add</button>
+      </div>
+      <div class="taskparent">
+        <div class="taskchild">
+          <div class="taskleftside">
+            <input type="checkbox" />
+            <p>Test Task</p>
+          </div>
+          <div class="taskrightside">
+            <div class="editbutton">✎</div>
+            <div class="deletebutton">🗑</div>
+          </div>
         </div>
-    </div>
-    <div class="taskfooter">
+        <div class="taskchild">
+          <div class="taskleftside">
+            <input type="checkbox" />
+            <p class="done">Test Task</p>
+          </div>
+          <div class="taskrightside">
+            <div class="editbutton">✎</div>
+            <div class="deletebutton">🗑</div>
+          </div>
+        </div>
+      </div>
+      <div class="taskfooter">
         <div class="footerinfo">
-            <p style="color: gray; font-size: 12px;">
-                <span class="tasknumber">2</span>
-                Active •
-                <span class="totaltasks">45</span>
-                Total
-            </p>
-    </div>
-    
-    <div class="tabsbutton">
-    <button class="controlBTN allBtn">All</button>
-    <button class="controlBTN">Active</button>
-    <button class="controlBTN">Completed</button>
-     </div>
-      <p style="color: gray; font-size: 12px;">Tip: Double-Click a task to edit it</p>
-    </div>
+          <p style="color: gray; font-size: 12px">
+            <span class="tasknumber">2</span>
+            Active •
+            <span class="totaltasks">45</span>
+            Total
+          </p>
+        </div>
+
+        <div class="tabsbutton">
+          <button class="controlBTN allBtn">All</button>
+          <button class="controlBTN">Active</button>
+          <button class="controlBTN">Completed</button>
+        
+            </div>
+            <p style="color: gray; font-size: 12px">
+          Tip: Double-Click a task to edit it
+        </p>
+      </div>
     </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
