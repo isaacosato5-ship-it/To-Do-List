@@ -29,30 +29,20 @@
           class="inputEl"
           placeholder="Add a new task and press enter"
         />
-        <button class="addBtn controlBTN">Add</button>
+        <button class="addBTN controlBTN">Add</button>
       </div>
-      <div class="taskparent">
-        <div class="taskchild">
-          <div class="taskleftside">
-            <input type="checkbox" />
-            <p>Test Task</p>
-          </div>
-          <div class="taskrightside">
-            <div class="editbutton">✎</div>
-            <div class="deletebutton">🗑</div>
-          </div>
-        </div>
-        <div class="taskchild">
-          <div class="taskleftside">
-            <input type="checkbox" />
-            <p class="done">Test Task</p>
-          </div>
-          <div class="taskrightside">
-            <div class="editbutton">✎</div>
-            <div class="deletebutton">🗑</div>
-          </div>
-        </div>
+      <!-- Tab one for all task -->
+      <div class="taskparent tab1">
+        <P>No Task Available at The Moment!!</P>
       </div>
+      <!-- Tab two for active task -->
+       <div class="taskparent tab2 ">
+        <P>No Task Available at The Moment!!</P>
+        </div>
+      <!-- Tab Three for com[pleted task -->
+       <div class="taskparent tab3">
+        <P>No Task Available at The Moment!!</P>
+        </div>
       <div class="taskfooter">
         <div class="footerinfo">
           <p style="color: gray; font-size: 12px">
@@ -65,15 +55,14 @@
 
         <div class="tabsbutton">
           <button class="controlBTN allBtn">All</button>
-          <button class="controlBTN">Active</button>
-          <button class="controlBTN">Completed</button>
+          <button class="controlBTN activeBtn">Active</button>
+          <button class="controlBTN compBtn">Completed</button>
         
             </div>
             <p style="color: gray; font-size: 12px">
           Tip: Double-Click a task to edit it
         </p>
       </div>
-    </div>
     <script src="script.js"></script>
   </body>
 </html>

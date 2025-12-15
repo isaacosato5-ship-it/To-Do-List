@@ -22,6 +22,9 @@ body {
     display: flex;
     margin: 50px;
 }
+img{
+    border-radius: 10%;
+}
 .todoheader{
     display: flex;
     justify-content: space-between;
@@ -45,7 +48,7 @@ body {
     justify-content: space-between;
     display: flex;
 }
-.addBtn, .allBtn{
+.addBTN, .allBtn{
     color: rgb(0, 209, 178);
     border: 1px solid rgb(0, 209, 178);
     background-color: rgba(0, 209, 178, 0.2);
@@ -91,6 +94,9 @@ body {
     text-decoration: line-through;
     color: rgb(150, 146, 146);
 }
+.tab2, .tab3, .tab1{
+    display: none;
+}
 .tabbBtn{
     font-weight: bold;
     padding: 5px;
@@ -101,7 +107,12 @@ body {
     display: flex;
     align-items: center;
 }
-
+.showTab {
+    display: block !important;
+}
+/* .hideTab {
+    display: none;
+} */
 @media (mix-width: 640px) {
             .container {
                 max-width: 300px;
