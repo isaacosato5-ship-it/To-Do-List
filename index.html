@@ -6,7 +6,7 @@
     <title>Osato's To-Do List</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body class="dark">
     <div class="container">
       <div class="todoheader">
         <div class="leftside">
@@ -17,10 +17,10 @@
           <h2>Osato's To-Do</h2>
         </div>
         <div class="rightside">
-          <button class="controlBTN lightDark">☀️</button>
-          <button class="controlBTN clearBTN">Clear Completed</button>
-          <button onclick="tester()" class="controlBTN exportBTN">Export</button>
-          <button class="controlBTN importBTN">Import</button>
+          <button class="controlBTN lightDark ">🌙</button>
+          <button class="controlBTN clearBTN ">Clear Completed</button>
+          <button onclick="tester()" class="controlBTN exportBTN ">Export</button>
+          <button class="controlBTN importBTN ">Import</button>
         </div>
       </div>
       <div class="taskinput">
@@ -28,11 +28,12 @@
           type="text"
           class="inputEl"
           placeholder="Add a new task and press enter"
+          name="inputEl dark"
         />
         <button class="addBTN controlBTN">Add</button>
       </div>
       <!-- Tab one for all task -->
-      <div class="taskparent tab1">
+      <div class="taskparent tab1 ">
         <P>No Task Available at The Moment!!</P>
       </div>
       <!-- Tab two for active task -->
@@ -45,7 +46,7 @@
         </div>
       <div class="taskfooter">
         <div class="footerinfo">
-          <p style="color: rgb(247, 247, 247); font-size: 12px">
+          <p style="color: rgb(70, 69, 69); font-size: 12px">
             <span class="tasknumber">2</span>
             Active •
             <span class="totaltasks">45</span>
@@ -59,9 +60,10 @@
           <button class="controlBTN compBtn">Completed</button>
         
             </div>
-            <p style="color: rgb(236, 234, 234); font-size: 12px">
+            <p style="color: rgb(63, 61, 61); font-size: 12px">
           Tip: Double-Click a task to edit it
         </p>
+      </div>
       </div>
     <script src="script.js"></script>
   </body>

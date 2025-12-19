@@ -9,7 +9,7 @@ body {
     width: 100%;
     justify-content: center;
     align-items: center;
-    background: #5e5858;
+    background: whitesmoke;
 }
 .container{
     min-height: 200px;
@@ -17,15 +17,16 @@ body {
     border-radius: 10px;
     box-shadow: 10px 10px 10px #080808;
     padding: 15px;
-    background-color: black;
     flex-direction: column;
     gap: 20px;
     display: flex;
     margin: 50px;
+    border: 1px solid rgb(61, 99, 99);
+    /* background-color: whitesmoke; */
 }
-h2{
+/* h2{
     color: whitesmoke;
-}
+} */
 img{
     border-radius: 10%;
 }
@@ -35,12 +36,13 @@ img{
     align-items: center;
 }
 .deletebutton{
-    padding: 5px;
+    padding: 8px;
     border-radius: 5px;
     background-color: rgb(26, 25, 25);
     color: aqua;
     border: none;
     font-weight: bold;
+    cursor: pointer;
 }
 .controlBTN{
     padding: 7px;
@@ -52,13 +54,26 @@ img{
     border: 1px solid rgb(202, 196, 196);
     color: rgb(59, 56, 56);
 }
+.lightDark{
+    border: 2px solid gold;
+}
+.lightDark:hover{
+    background-color: rgb(107, 92, 8);
+}
 .clearBTN{
     color: rgb(241, 3, 3);
     background-color: rgb(250, 213, 213);
+    border: none;
 }
 .clearBTN:hover{
     background-color: rgb(241, 3, 3);
     color: rgb(250, 213, 213);
+}
+.editInput{
+    padding: 5px;
+    border: 1px solid #00e5ff;
+    background-color: #d6c9c9;
+    color: black;
 }
 .taskinput{
     justify-content: space-between;
@@ -99,6 +114,7 @@ img{
     padding: 20px;
     background-color: rgb(223, 220, 220);
     min-height: 100px;
+    color: black;
 }
 .taskleftside{
     display: flex;
@@ -139,9 +155,10 @@ img{
 .showTab {
     display: block !important;
 }
-/* .hideTab {
-    display: none;
-} */
+.dark{
+    background-color: black;
+    color: white;
+}
 @media (mix-width: 640px) {
             .container {
                 max-width: 300px;

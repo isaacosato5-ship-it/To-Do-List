@@ -109,14 +109,34 @@ taskClear.addEventListener("click", function () {
   renderTasks();
 });
 
-function formode() {
-  if (lightDark.textContent === "☀️") {
-    lightDark.textContent = "🌙";
-  } else if (lightDark.textContent === "🌙") {
-    lightDark.textContent = "☀️";
-  }
-}
-lightDark.addEventListener("click", formode);
+// function formode() {
+//   if (lightDark.textContent === "🌙") {
+//     lightDark.textContent = "☀️";
+//   } else if (lightDark.textContent === "☀️") {
+//     lightDark.textContent = "🌙";
+//   }
+// }
+function lightDarkControl () {
+   if (lightDark.textContent === "☀️") {
+        lightDark.textContent = "🌙";
+        document.body.classList.add("dark")
+        lightDark.classList.add("dark")
+        ClearBTN.classList.add("dark")
+        exportBTN.classList.add("dark")
+        importBTN.classList.add("dark")
+        inputEl.classList.add("dark")
+        
+    } else {
+        lightDark.textContent === "🌙"
+        lightDark.textContent = "☀️";
+        document.body.classList.remove("dark")
+        lightDark.classList.remove("dark")
+         ClearBTN.classList.remove("dark")
+        exportBTN.classList.remove("dark")
+        importBTN.classList.remove("dark")
+        inputEl.classList.remove("dark")
+}}
+lightDark.addEventListener("click", lightDarkControl);
 
 function tester() {
   alert("Testing");
@@ -126,7 +146,6 @@ function editTask(e) {
   let editbutton = e.target;
   let taskChild1 = editbutton.parentElement;
   let taskChild = taskChild1.parentElement;
-  console.log(taskChild);
   const taskleftside = taskChild.querySelector(".taskleftside");
   const textElement = taskleftside.querySelector("p");
   const oldText = textElement.textContent;
@@ -152,13 +171,14 @@ function editTask(e) {
     newP.textContent = tasksArray[taskIndex];
     taskleftside.replaceChild(newP, input);
 
-    input.addEventListener("blur", saveEdit);
   }
   input.addEventListener("keypress", function (ev) {
     if (ev.key === "Enter") {
       saveEdit();
     }
   });
+  
+    input.addEventListener("blur", saveEdit);
 }
 function deleteTask(e) {
   //  console.log(e.target)
