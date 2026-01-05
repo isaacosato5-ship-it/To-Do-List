@@ -14,8 +14,22 @@ const taskClear = document.querySelector(".clearBTN");
 const importTask = document.querySelector(".importBTN");
 const exportTask = document.querySelector(".exportBTN");
 const lightDark = document.querySelector(".lightDark");
+const tasknumber = document.querySelector(".tasknumber");
+const totaltasks = document.querySelector(".totaltasks");
+const completedDone = document.querySelector(".completedDone");
+
+let tasksArray = [];
+let activeTaskArray = [];
+let completedTasksArray = [];
+
 forAll.classList.add("showTab");
 
+function updateState() {
+  tasknumber.textContent = activeTaskArray.length;
+  totaltasks.textContent = tasksArray.length;
+  completedDone.textContent = completedTasksArray.length;
+}
+updateState();
 tabAll.addEventListener("click", function () {
   forAll.classList.add("showTab");
   forActive.classList.remove("showTab");
@@ -31,8 +45,7 @@ tabcomp.addEventListener("click", function () {
   forActive.classList.remove("showTab");
   forcomp.classList.add("showTab");
 });
-function renderTasks(usertask, id) {
-  console.log(usertask);
+function renderTasks(usertask, id, tab = forAll) {
   if (usertask.length < 1) {
     return;
   }
@@ -42,9 +55,14 @@ function renderTasks(usertask, id) {
       </div>`;
     return;
   }
+
+  if (usertask === "") {
+    return;
+  }
   //Create Task Left Side
   let checkBox = document.createElement("input");
   checkBox.type = "checkbox";
+  checkBox.onclick = markAsCompleted;
   let pElement = document.createElement("p");
   pElement.textContent = usertask;
   let taskElement = document.createElement("div");
@@ -75,38 +93,43 @@ function renderTasks(usertask, id) {
   taskChildDiv.appendChild(taskElement);
   taskChildDiv.appendChild(taskElement2);
   taskChildDiv.id = id;
-  forAll.appendChild(taskChildDiv);
+  tab.appendChild(taskChildDiv);
 }
 
-let tasksArray = [];
-
-function addTask() {
-  let userInputValue = userInput.value;
-  console.log(tasksArray);
-  tasksArray.push(userInputValue);
-  console.log(tasksArray);
-  userInput.value = "";
-
-  //Clearing Existing HTML
-  forAll.innerHTML = "";
-
-  for (let i = 0; i < tasksArray.length; i++) {
-    renderTasks(tasksArray[i], i);
+function addTask(tab, array, tabType) {
+  let userInputValue = userInput.value.trim();
+  let finalArray;
+  if (tabType === "completed") {
+    finalArray = array;
+  } else {
+    array.push(userInputValue);
+    finalArray = array  
   }
+  //Clearing Existing HTML
+  tab.innerHTML = "";
+  console.log(finalArray)
+  for (let i = 0; i < finalArray.length; i++) {
+    renderTasks(finalArray[i], i, tab);
+  }
+  userInput.value = "";
+  updateState();
 }
 
 addTaskBTN.addEventListener("click", function () {
-  addTask();
+  addTask(forAll, tasksArray);
 });
 userInput.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
-    addTask();
+    addTask(forAll, tasksArray);
   }
 });
 
 taskClear.addEventListener("click", function () {
   tasksArray = [];
-  renderTasks();
+  renderTasks(forAll, tasksArray);
+  console.log(array);
+
+  alert();
 });
 
 // function formode() {
@@ -116,26 +139,26 @@ taskClear.addEventListener("click", function () {
 //     lightDark.textContent = "🌙";
 //   }
 // }
-function lightDarkControl () {
-   if (lightDark.textContent === "☀️") {
-        lightDark.textContent = "🌙";
-        document.body.classList.add("dark")
-        lightDark.classList.add("dark")
-        ClearBTN.classList.add("dark")
-        exportBTN.classList.add("dark")
-        importBTN.classList.add("dark")
-        inputEl.classList.add("dark")
-        
-    } else {
-        lightDark.textContent === "🌙"
-        lightDark.textContent = "☀️";
-        document.body.classList.remove("dark")
-        lightDark.classList.remove("dark")
-         ClearBTN.classList.remove("dark")
-        exportBTN.classList.remove("dark")
-        importBTN.classList.remove("dark")
-        inputEl.classList.remove("dark")
-}}
+function lightDarkControl() {
+  if (lightDark.textContent === "☀️") {
+    lightDark.textContent = "🌙";
+    document.body.classList.add("dark");
+    lightDark.classList.add("dark");
+    ClearBTN.classList.add("dark");
+    exportBTN.classList.add("dark");
+    importBTN.classList.add("dark");
+    inputEl.classList.add("dark");
+  } else {
+    lightDark.textContent === "🌙";
+    lightDark.textContent = "☀️";
+    document.body.classList.remove("dark");
+    lightDark.classList.remove("dark");
+    ClearBTN.classList.remove("dark");
+    exportBTN.classList.remove("dark");
+    importBTN.classList.remove("dark");
+    inputEl.classList.remove("dark");
+  }
+}
 lightDark.addEventListener("click", lightDarkControl);
 
 function tester() {
@@ -157,8 +180,6 @@ function editTask(e) {
   taskleftside.replaceChild(input, textElement);
   input.focus();
   const taskIndex = tasksArray.indexOf(oldText);
-  console.log(taskIndex);
-  console.log(tasksArray);
 
   function saveEdit() {
     const newText = input.value.trim();
@@ -170,15 +191,14 @@ function editTask(e) {
     const newP = document.createElement("p");
     newP.textContent = tasksArray[taskIndex];
     taskleftside.replaceChild(newP, input);
-
   }
   input.addEventListener("keypress", function (ev) {
     if (ev.key === "Enter") {
       saveEdit();
     }
   });
-  
-    input.addEventListener("blur", saveEdit);
+
+  input.addEventListener("blur", saveEdit);
 }
 function deleteTask(e) {
   //  console.log(e.target)
@@ -187,6 +207,19 @@ function deleteTask(e) {
   let taskchild = taskleftside.parentElement;
   let id = taskchild.id;
   tasksArray.splice(id, 1);
-  console.log(id);
-  addTask();
+  addTask(forAll, tasksArray);
+}
+
+function markAsCompleted(e) {
+  const checkbox = e.target;
+  const checkboxP = checkbox.parentElement;
+  const taskChild = checkboxP.parentElement;
+  const taskid = Number(taskChild.id);
+  const PEL = checkboxP.querySelector("p");
+  const usertask = PEL.textContent;
+  let temporalArray = tasksArray.splice(taskid, 1);
+  completedTasksArray.push(usertask);
+  addTask(forcomp, completedTasksArray, "completed");
+  addTask(forAll, tasksArray);
+  updateState();
 }
