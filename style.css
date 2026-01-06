@@ -56,14 +56,25 @@ img{
 .lightDark:hover{
     background-color: rgb(107, 92, 8);
 }
-.clearBTN{
+.clearAll{
     color: rgb(241, 3, 3);
     background-color: rgb(250, 213, 213);
     border: none;
+    font-weight: bold;
 }
-.clearBTN:hover{
+.clearAll:hover{
     background-color: rgb(241, 3, 3);
     color: rgb(250, 213, 213);
+}
+.clearBTN{
+    color: black;
+    font-weight: bold;
+    background-color: rgb(245, 212, 25);
+    border: none;
+}
+.clearBTN:hover{
+    background-color: yellow;
+    color: black;
 }
 .editInput{
     padding: 5px;
@@ -74,11 +85,6 @@ img{
 .taskinput{
     justify-content: space-between;
     display: flex;
-}
-.addBTN, .allBtn{
-    color: rgb(0, 209, 178);
-    border: 1px solid rgb(0, 209, 178);
-    background-color: rgba(0, 209, 178, 0.2);
 }
  .allBtn:hover{
     color: black;
@@ -101,8 +107,8 @@ img{
     font-weight: bold;
 }
 .compBtn:hover{
-    background-color: rgb(124, 122, 122);
-    color: black;
+   color: black;
+    background-color: rgb(0, 209, 178);
     font-weight: bold;
 }
 .inputEl:focus{
@@ -164,6 +170,11 @@ img{
 .dark{
     background-color: black;
     color: white;
+}
+.ActiveTabBTN{
+    color: rgb(0, 209, 178);
+    border: 1px solid rgb(0, 209, 178);
+    background-color: rgba(0, 209, 178, 0.2);
 }
 @media (mix-width: 640px) {
             .container {

@@ -11,6 +11,7 @@ const userInput = document.querySelector(".inputEl");
 const addTaskBTN = document.querySelector(".addBTN");
 // Selections for clearing tasksArray, importing and Export
 const taskClear = document.querySelector(".clearBTN");
+const clearAll = document.querySelector("clearAll")
 const importTask = document.querySelector(".importBTN");
 const exportTask = document.querySelector(".exportBTN");
 const lightDark = document.querySelector(".lightDark");
@@ -25,36 +26,42 @@ let completedTasksArray = [];
 forAll.classList.add("showTab");
 
 function updateState() {
-  tasknumber.textContent = activeTaskArray.length;
-  totaltasks.textContent = tasksArray.length;
+  // GO THROUGH THE TASK ARRAY
+  for (let i = 0; i < tasksArray.length; i++) {
+    // FIND ANY EMPTY STRING
+      if (tasksArray[i]=== "") {
+        // DELETE THE EMPTY STRING 
+        tasksArray.splice(i, 1)
+      }
+  }
+
+  tasknumber.textContent = tasksArray.length;
+  totaltasks.textContent = tasksArray.length + completedTasksArray.length;
   completedDone.textContent = completedTasksArray.length;
 }
 updateState();
 tabAll.addEventListener("click", function () {
   forAll.classList.add("showTab");
-  forActive.classList.remove("showTab");
   forcomp.classList.remove("showTab");
-});
-tabActive.addEventListener("click", function () {
-  forAll.classList.remove("showTab");
-  forActive.classList.add("showTab");
-  forcomp.classList.remove("showTab");
+  tabAll.classList.add("ActiveTabBTN")
+  tabcomp.classList.remove("ActiveTabBTN")
 });
 tabcomp.addEventListener("click", function () {
   forAll.classList.remove("showTab");
-  forActive.classList.remove("showTab");
   forcomp.classList.add("showTab");
+  tabcomp.classList.add("ActiveTabBTN")
+  tabAll.classList.remove("ActiveTabBTN")
 });
 function renderTasks(usertask, id, tab = forAll) {
   if (usertask.length < 1) {
     return;
   }
-  if (tasksArray.length < 1) {
-    forAll.innerHTML = `<div class="taskparent">
-        <P>No Task Available at The Moment!!</P>
-      </div>`;
-    return;
-  }
+  // if (tasksArray.length < 1) {
+  //   forAll.innerHTML = `<div class="taskparent">
+  //       <P>No Task Available at The Moment!!</P>
+  //     </div>`;
+  //   return;
+  // }
 
   if (usertask === "") {
     return;
@@ -89,6 +96,7 @@ function renderTasks(usertask, id, tab = forAll) {
   taskElement2.appendChild(taskButton2);
   // TASK CHILD DIV
   let taskChildDiv = document.createElement("div");
+  taskChildDiv.addEventListener("dblclick", editTask)
   taskChildDiv.classList.add("taskchild");
   taskChildDiv.appendChild(taskElement);
   taskChildDiv.appendChild(taskElement2);
@@ -103,11 +111,10 @@ function addTask(tab, array, tabType) {
     finalArray = array;
   } else {
     array.push(userInputValue);
-    finalArray = array  
+    finalArray = array;
   }
   //Clearing Existing HTML
   tab.innerHTML = "";
-  console.log(finalArray)
   for (let i = 0; i < finalArray.length; i++) {
     renderTasks(finalArray[i], i, tab);
   }
@@ -125,13 +132,19 @@ userInput.addEventListener("keypress", function (e) {
 });
 
 taskClear.addEventListener("click", function () {
-  tasksArray = [];
-  renderTasks(forAll, tasksArray);
-  console.log(array);
+  completedTasksArray = [];
+  addTask(forcomp, completedTasksArray, "completed");
 
   alert();
 });
+clearAll.addEventListener("click", function () {
+  completedTasksArray = [];
+  tasksArray = []
+  addTask(forAll, tasksArray)
+  addTask(forcomp, completedTasksArray, "completed");
 
+  alert();
+});
 // function formode() {
 //   if (lightDark.textContent === "🌙") {
 //     lightDark.textContent = "☀️";
@@ -201,7 +214,6 @@ function editTask(e) {
   input.addEventListener("blur", saveEdit);
 }
 function deleteTask(e) {
-  //  console.log(e.target)
   let deletebutton = e.target;
   let taskleftside = deletebutton.parentElement;
   let taskchild = taskleftside.parentElement;
@@ -217,9 +229,20 @@ function markAsCompleted(e) {
   const taskid = Number(taskChild.id);
   const PEL = checkboxP.querySelector("p");
   const usertask = PEL.textContent;
-  let temporalArray = tasksArray.splice(taskid, 1);
-  completedTasksArray.push(usertask);
-  addTask(forcomp, completedTasksArray, "completed");
-  addTask(forAll, tasksArray);
+  // IF STATEMENT TO CHECK IF THE TASK IN ALLTASKS ARRAY (usertask)
+  if (tasksArray.includes(usertask)) {
+    //IF THE TASK IS STILL IN taskarray THAT MEANS IT IS NOT YET COMPLETED SO
+    //WE BEGING THE PROCESS BY FIRST
+    // 1. REMOVING THE TASK FROM THE taskarray ARRAY
+    tasksArray.splice(taskid, 1);
+    //2. THEN PUSHING H= THE TASK INTO THE COMPLETED TASK ARRAY
+    completedTasksArray.push(usertask);
+    //3. RENDERING THE TASK FOR COMPLETED TASKS TAB
+    addTask(forcomp, completedTasksArray, "completed");
+    // 4. RENDERING THE TAB FOR ALL
+    addTask(forAll, tasksArray);
+  } else {
+    alert("You cant move completed Task");
+  }
   updateState();
 }
